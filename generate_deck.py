@@ -95,7 +95,7 @@ def create_layman_presentation():
     p1_desc.font.color.rgb = TEXT_MUTED
 
     p1_live = tf1.add_paragraph()
-    p1_live.text = "\nTry It Live: https://spendly-tracker.vercel.app"
+    p1_live.text = "\nTry It Live: https://spendly-nine-beta.vercel.app"
     p1_live.alignment = PP_ALIGN.CENTER
     p1_live.font.size = Pt(15)
     p1_live.font.bold = True
@@ -175,12 +175,12 @@ def create_layman_presentation():
     s4 = add_base_slide("Features Anyone Can Use in Seconds", "Core Features")
 
     features = [
+        ("🤖 Spendly AI Financial Copilot", "Natural language logging ('Spent ₦4,500 on lunch'), instant spending audits, and savings advice."),
         ("💳 Your Total Balance Card", "See your total money, total income, and total expenses in big, clear numbers."),
-        ("📈 Spending Line Graph", "See if you're spending more or less this week compared to last week or last month."),
+        ("📈 Spending Trend Graph", "See if you're spending more or less this week compared to last week or last month."),
         ("🍩 The 'Pie of Spending'", "A friendly donut chart showing: '40% on Food, 25% on Rent, 15% on Transport'."),
         ("🎯 Monthly Budget Progress", "Visual progress bars that stay friendly green when safe, and turn amber if you're close to limit."),
-        ("🔍 Find Any Payment Instantly", "Type 'dinner' or 'fuel' in the search bar to see all past receipts in a flash."),
-        ("🌍 Works in Your Currency", "Formatted cleanly for Nigerian Naira (₦), US Dollars ($), Euros (€), and Pounds (£).")
+        ("🌍 Works in Any Currency", "Formatted cleanly for Nigerian Naira (₦), US Dollars ($), Euros (€), and Pounds (£).")
     ]
 
     for i, (title, desc) in enumerate(features):
@@ -395,7 +395,8 @@ def create_layman_presentation():
     p10_sub.font.color.rgb = ACCENT_GREEN
 
     p10_links = tf10.add_paragraph()
-    p10_links.text = "🌐 Open in Browser: https://spendly-tracker.vercel.app\n" \
+    p10_links.text = "🌐 Open in Browser: https://spendly-nine-beta.vercel.app\n" \
+                     "🤖 AI Copilot Included: Built-in voice & text financial advisor\n" \
                      "⚡ Instant Demo: Click 'Instant Guest / Demo Login' to test with 1 click!\n" \
                      "📱 Mobile Shell: Can also run as an app via Expo Go\n" \
                      "💻 Open Source: github.com/Daniel4456/spendly"
