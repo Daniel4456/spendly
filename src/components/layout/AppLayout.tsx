@@ -4,6 +4,7 @@ import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
 import { MobileNavigation } from './MobileNavigation';
 import { TransactionModal } from '../transactions/TransactionModal';
+import { AiFloatingDrawer } from '../ai/AiFloatingDrawer';
 import { useTransactions } from '../../context/TransactionContext';
 import { useToast } from '../../context/ToastContext';
 
@@ -48,6 +49,9 @@ export const AppLayout: React.FC = () => {
         onClose={() => setIsAddModalOpen(false)}
         onSave={handleSaveTransaction}
       />
+
+      {/* Floating AI Financial Copilot */}
+      <AiFloatingDrawer />
     </div>
   );
 };

@@ -78,6 +78,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAddModal }) => {
 
         {/* Right action controls */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Ask AI Link Button */}
+          <Link
+            to="/ai-advisor"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-accent-primary/10 hover:bg-accent-primary/20 text-accent-primary border border-accent-primary/20 text-xs font-semibold transition-all active:scale-95"
+            title="Spendly AI Financial Advisor"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-accent-primary animate-pulse" />
+            <span className="hidden sm:inline">Ask AI</span>
+          </Link>
+
           {/* Quick Add Button (Desktop only, mobile has bottom bar) */}
           {onOpenAddModal && (
             <button

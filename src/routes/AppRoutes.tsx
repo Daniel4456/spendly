@@ -7,6 +7,7 @@ import { DashboardPage } from '../pages/DashboardPage';
 import { TransactionsPage } from '../pages/TransactionsPage';
 import { BudgetsPage } from '../pages/BudgetsPage';
 import { ProfilePage } from '../pages/ProfilePage';
+import { AiAdvisorPage } from '../pages/AiAdvisorPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ProtectedRoute, PublicRoute } from './ProtectedRoute';
 import { AppLayout } from '../components/layout/AppLayout';
@@ -28,6 +29,7 @@ export const AppRoutes: React.FC = () => {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/transactions" element={<TransactionsPage />} />
           <Route path="/budgets" element={<BudgetsPage />} />
+          <Route path="/ai-advisor" element={<AiAdvisorPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Route>

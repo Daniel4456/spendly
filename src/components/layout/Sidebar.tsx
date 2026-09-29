@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   PlusCircle,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
@@ -42,6 +43,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Transactions', path: '/transactions', icon: ArrowLeftRight },
     { name: 'Budgets', path: '/budgets', icon: PieChart },
+    { name: 'AI Advisor', path: '/ai-advisor', icon: Sparkles, badge: 'AI' },
     { name: 'Profile & Settings', path: '/profile', icon: UserCheck },
   ];
 
@@ -129,7 +131,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-accent-primary rounded-r-full" />
                   )}
                   <Icon className="w-4 h-4 shrink-0" />
-                  {!isCollapsed && <span className="truncate">{item.name}</span>}
+                  {!isCollapsed && (
+                    <>
+                      <span className="truncate">{item.name}</span>
+                      {item.badge && (
+                        <span className="ml-auto px-1.5 py-0.5 rounded-full bg-accent-primary/20 text-accent-primary text-[9px] font-black uppercase tracking-wider">
+                          {item.badge}
+                        </span>
+                      )}
+                    </>
+                  )}
                 </>
               )}
             </NavLink>

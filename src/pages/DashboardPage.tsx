@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getGreeting } from '../utils/formatters';
 import { useAuth } from '../context/AuthContext';
 import { useTransactions } from '../context/TransactionContext';
@@ -10,12 +11,12 @@ import { CategoryChart } from '../components/dashboard/CategoryChart';
 import { RecentTransactions } from '../components/dashboard/RecentTransactions';
 import { SkeletonCard, SkeletonChart } from '../components/common/LoadingSkeleton';
 import { ErrorState } from '../components/common/ErrorState';
-import { Sparkles, Database, Plus } from 'lucide-react';
+import { Sparkles, Database, Plus, Bot, ArrowRight } from 'lucide-react';
 import { Button } from '../components/common/Button';
 
 export const DashboardPage: React.FC = () => {
   const { profile, user, isFirebase } = useAuth();
-  const { loading, error, refreshData, transactions, seedDemoData } = useTransactions();
+  const { loading, error, refreshData, transactions, seedDemoData, categoryExpenses, savingsRate } = useTransactions();
   const { showToast } = useToast();
 
   const displayName = profile?.displayName || user?.displayName || 'there';
@@ -143,6 +144,36 @@ export const DashboardPage: React.FC = () => {
         <div className="lg:col-span-5 min-w-0">
           <CategoryChart />
         </div>
+      </div>
+
+      {/* Spendly AI Insight Banner */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-accent-primary/15 via-[#1E1B4B]/30 to-financial-income/10 dark:from-accent-primary/15 dark:via-[#1E1B4B]/30 dark:to-financial-income/10 light:from-indigo-50 light:to-emerald-50 border border-accent-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-accent-primary/20 text-accent-primary flex items-center justify-center p-0.5 shrink-0 shadow-glow-primary">
+            <Bot className="w-5 h-5 text-accent-primary animate-pulse" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-accent-primary uppercase tracking-wider">
+                Spendly AI Financial Copilot
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-financial-income animate-ping" />
+            </div>
+            <p className="text-xs sm:text-sm text-text-primary dark:text-text-primary light:text-slate-800 mt-0.5 font-medium">
+              {Object.keys(categoryExpenses || {}).length > 0
+                ? 'Your AI Copilot has analyzed your cash flow. Ask for a spending audit, budget review, or instant voice logging.'
+                : 'Need help managing your cash flow? Your autonomous AI Copilot is online and ready.'}
+            </p>
+          </div>
+        </div>
+
+        <Link
+          to="/ai-advisor"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-accent-primary hover:bg-accent-primary-hover text-white text-xs font-bold shadow-glow-primary transition-all active:scale-95 shrink-0"
+        >
+          <span>Ask AI Advisor</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
 
       {/* Recent Transactions Section */}
