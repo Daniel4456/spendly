@@ -10,7 +10,7 @@ import { CategoryChart } from '../components/dashboard/CategoryChart';
 import { RecentTransactions } from '../components/dashboard/RecentTransactions';
 import { SkeletonCard, SkeletonChart } from '../components/common/LoadingSkeleton';
 import { ErrorState } from '../components/common/ErrorState';
-import { Sparkles, Database } from 'lucide-react';
+import { Sparkles, Database, Plus } from 'lucide-react';
 import { Button } from '../components/common/Button';
 
 export const DashboardPage: React.FC = () => {
@@ -18,11 +18,23 @@ export const DashboardPage: React.FC = () => {
   const { loading, error, refreshData, transactions, seedDemoData } = useTransactions();
   const { showToast } = useToast();
 
-  const greeting = getGreeting(profile?.displayName || user?.displayName || 'there');
+  const displayName = profile?.displayName || user?.displayName || 'there';
+  const greeting = getGreeting(displayName);
 
   const handleSeedDemo = async () => {
     await seedDemoData();
     showToast('Sample financial data loaded successfully!', 'success');
+  };
+
+  const triggerAddTransactionModal = () => {
+    const addBtn = document.querySelector('button[title="Add Transaction"]') as HTMLButtonElement;
+    if (addBtn) {
+      addBtn.click();
+    } else {
+      // Fallback: click mobile add button
+      const mobileAddBtn = document.querySelector('button[aria-label="Add transaction"]') as HTMLButtonElement;
+      if (mobileAddBtn) mobileAddBtn.click();
+    }
   };
 
   if (loading && transactions.length === 0) {
@@ -60,7 +72,6 @@ export const DashboardPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Demo Seed Data Quick Action if empty */}
         {transactions.length === 0 && (
           <Button
             variant="secondary"
@@ -72,6 +83,39 @@ export const DashboardPage: React.FC = () => {
           </Button>
         )}
       </div>
+
+      {/* First-Time User Welcome Banner (Section 48) */}
+      {transactions.length === 0 && (
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent-primary/20 via-[#18233C] to-financial-income/10 dark:from-accent-primary/20 dark:via-[#18233C] dark:to-financial-income/10 light:from-indigo-50 light:via-white light:to-emerald-50 border border-accent-primary/30 p-6 sm:p-8 animate-slide-up shadow-glow-primary">
+          <div className="max-w-2xl space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-accent-primary/20 text-accent-primary border border-accent-primary/30">
+              <Sparkles className="w-3.5 h-3.5" /> First-time User Experience
+            </span>
+            <h2 className="text-xl sm:text-2xl font-bold text-text-primary dark:text-text-primary light:text-slate-900 tracking-tight">
+              Welcome to Spendly, {displayName}!
+            </h2>
+            <p className="text-xs sm:text-sm text-text-secondary dark:text-text-secondary light:text-slate-600 leading-relaxed">
+              “Take control of your money.” Let’s start tracking your finances by logging your first transaction, or explore the pre-built demo data.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Button
+                variant="primary"
+                onClick={triggerAddTransactionModal}
+                leftIcon={<Plus className="w-4 h-4" />}
+              >
+                Add Your First Transaction
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={handleSeedDemo}
+                leftIcon={<Sparkles className="w-4 h-4 text-accent-primary" />}
+              >
+                Load Sample Data
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Cloud Sync / Local storage info pill if not configured in .env */}
       {!isFirebase && (
@@ -92,22 +136,17 @@ export const DashboardPage: React.FC = () => {
       <SummaryCards />
 
       {/* Visualizations Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-7">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-w-0">
+        <div className="lg:col-span-7 min-w-0">
           <SpendingChart />
         </div>
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 min-w-0">
           <CategoryChart />
         </div>
       </div>
 
       {/* Recent Transactions Section */}
-      <RecentTransactions
-        onAddTransaction={() => {
-          const addBtn = document.querySelector('button[title="Add Transaction"]') as HTMLButtonElement;
-          if (addBtn) addBtn.click();
-        }}
-      />
+      <RecentTransactions onAddTransaction={triggerAddTransactionModal} />
     </div>
   );
 };

@@ -48,7 +48,7 @@ export const CategoryChart: React.FC = () => {
   };
 
   return (
-    <div className="rounded-3xl bg-card-dark dark:bg-card-dark light:bg-white border border-spendlyBorder-dark dark:border-spendlyBorder-dark light:border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+    <div className="rounded-3xl bg-card-dark dark:bg-card-dark light:bg-white border border-spendlyBorder-dark dark:border-spendlyBorder-dark light:border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between min-w-0">
       <div className="mb-4">
         <h3 className="text-base sm:text-lg font-bold text-text-primary dark:text-text-primary light:text-slate-900">
           Where Your Money Goes
@@ -66,7 +66,7 @@ export const CategoryChart: React.FC = () => {
           <p className="text-xs text-text-secondary">No expense transactions recorded yet.</p>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row items-center gap-6">
+        <div className="flex flex-col lg:flex-row items-center gap-6 min-w-0 w-full">
           {/* Donut Chart */}
           <div className="w-full sm:w-56 h-48 sm:h-56 relative shrink-0">
             <ResponsiveContainer width="100%" height="100%">

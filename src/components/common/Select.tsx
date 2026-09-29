@@ -33,7 +33,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             id={selectId}
             aria-invalid={Boolean(error)}
-            className={`w-full rounded-xl bg-card-dark dark:bg-card-dark light:bg-white text-text-primary dark:text-text-primary light:text-slate-900 border appearance-none pr-10 pl-3.5 py-2.5 min-h-[44px] text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-primary cursor-pointer ${
+            className={`w-full rounded-xl bg-card-dark dark:bg-card-dark light:bg-white text-text-primary dark:text-text-primary light:text-slate-900 border appearance-none pr-10 pl-3.5 py-2.5 min-h-[44px] text-base sm:text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-primary cursor-pointer ${
               error
                 ? 'border-financial-expense focus:border-financial-expense focus:ring-financial-expense/20'
                 : 'border-spendlyBorder-dark dark:border-spendlyBorder-dark light:border-slate-300 focus:border-accent-primary'

@@ -34,7 +34,7 @@ export const AppLayout: React.FC = () => {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 flex flex-col min-w-0 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto w-full pb-28 md:pb-8">
+        <main className="flex-1 flex flex-col min-w-0 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto w-full pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-8">
           <Outlet />
         </main>
       </div>

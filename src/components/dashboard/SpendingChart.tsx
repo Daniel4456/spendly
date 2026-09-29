@@ -94,7 +94,7 @@ export const SpendingChart: React.FC = () => {
       </div>
 
       {/* Chart container */}
-      <div className="w-full h-56 sm:h-72">
+      <div className="w-full h-56 sm:h-72 min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>

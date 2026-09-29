@@ -55,7 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             type={resolvedType}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
-            className={`w-full rounded-xl bg-card-dark dark:bg-card-dark light:bg-white text-text-primary dark:text-text-primary light:text-slate-900 border transition-all duration-200 placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-primary text-sm py-2.5 min-h-[44px] ${
+            className={`w-full rounded-xl bg-card-dark dark:bg-card-dark light:bg-white text-text-primary dark:text-text-primary light:text-slate-900 border transition-all duration-200 placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-primary text-base sm:text-sm py-2.5 min-h-[44px] ${
               leftIcon ? 'pl-10' : 'pl-3.5'
             } ${isPassword || rightIcon ? 'pr-11' : 'pr-3.5'} ${
               error

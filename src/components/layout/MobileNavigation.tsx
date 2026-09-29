@@ -15,7 +15,7 @@ interface MobileNavigationProps {
 export const MobileNavigation: React.FC<MobileNavigationProps> = ({ onOpenAddModal }) => {
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-card-dark/95 dark:bg-card-dark/95 light:bg-white/95 backdrop-blur-lg border-t border-spendlyBorder-dark dark:border-spendlyBorder-dark light:border-slate-200 px-3 py-2 transition-colors duration-200"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-card-dark/95 dark:bg-card-dark/95 light:bg-white/95 backdrop-blur-lg border-t border-spendlyBorder-dark dark:border-spendlyBorder-dark light:border-slate-200 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))] transition-colors duration-200"
       aria-label="Mobile Navigation"
     >
       <div className="max-w-md mx-auto flex items-center justify-around relative">
